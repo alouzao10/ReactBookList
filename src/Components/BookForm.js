@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import { BookContext } from '../Context/BookContext';
 
 function BookForm() {
-  const { books, addBook } = useContext(BookContext);
+  const { dispatch } = useContext(BookContext);
 
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
@@ -22,7 +22,7 @@ function BookForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    addBook(title, author);
+    dispatch({ type: 'ADD_BOOK', book: { title, author } });
     setTitle('');
     setAuthor('');
   };
